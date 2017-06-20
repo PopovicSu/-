@@ -1,0 +1,24 @@
+.row div{
+   float:left;
+   width:14%;
+   border: 1px solid black;
+}
+ul{
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+    background:white;
+}
+ul li{
+	list-style: none;
+}
+body{
+	position:relative;
+}
+.wrap{
+	background-image:url("../img/b1.jpg");
+}
+.row{
+	padding: 15px 0;
+}

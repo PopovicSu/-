@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/angular.min.js"></script> 
+<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/xlsx.full.min.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+<div ng-app="app" ng-controller="my" ng-init="init()" class="wrap">
+	<div id="soreList"   class="container">
+		<div  class="row">
+			<div  class="col-md-1">学号</div>
+			<div class="col-md-1">姓名</div>
+			<div class="col-md-1">专业</div>
+			<div class="col-md-1">年级</div>
+			<div class="col-md-1">平时成绩</div>
+			<div class="col-md-1">大作业成绩</div>
+			<div class="col-md-1">期末成绩</div>
+		</div>
+		<div style="width:100%;height:600px">
+			<div class="row"  ng-repeat="list in lists" ng-click="check($event)" page={{getPage($index)}} on-finish-render-filters>
+				<div class="col-md-1">{{list.id}}</div>
+				<div class="col-md-1">{{list.name}}</div>
+				<div class="col-md-1">{{list.zy}}</div>
+				<div class="col-md-1">{{list.nj}}</div>
+				<div class="col-md-1">{{list.ps}}</div>
+				<div class="col-md-1">{{list.ds}}</div>
+				<div class="col-md-1">{{list.qs}}</div>
+			</div>
+		</div>
+
+		<div class="btn btn-default">当前页{{now+1}}</div>
+		<div ng-click="pre()" class="btn btn-default">pre</div>
+		<div ng-click="next()" class="btn btn-default">next</div>
+		<div ng-click="add()" class="btn btn-default">add</div>
+		<div ng-click="del()" class="btn btn-default">del</div>
+		<div ng-click="import()" class="btn btn-default">import</div>
+		<div ng-click="edit()" class="btn btn-default">edit</div>
+	</div>
+	<ul ng-show="show"  >
+		<li>学号<input type="text" ng-model="id" /></li>
+		<li>姓名<input type="text" ng-model="name"/></li>
+		<li>专业<input type="text" ng-model="zy"/></li>
+		<li>年级<input type="text" ng-model="nj"/></li>
+		<li>平时成绩<input type="text" ng-model="ps"/></li>
+		<li>大作业成绩<input type="text" ng-model="ds"/></li>
+		<li>期末成绩<input type="text" ng-model="qs"/></li>
+		<span ng-click="sure()"  class="btn btn-success"> 确认</span>
+		<span ng-click='cancel()'  class="btn btn-info">取消</span>
+	</ul>
+	<ul ng-show="editShow" >
+		<li>学号<input type="text" ng-model="id1" readonly/></li>
+		<li>姓名<input type="text" ng-model="name1"/></li>
+		<li>专业<input type="text" ng-model="zy1"/></li>
+		<li>年级<input type="text" ng-model="nj1"/></li>
+		<li>平时成绩<input type="text" ng-model="ps1"/></li>
+		<li>大作业成绩<input type="text" ng-model="ds1"/></li>
+		<li>期末成绩<input type="text" ng-model="qs1"/></li>
+		<span ng-click="editSure()"  class="btn btn-success"> 确认</span>
+		<span ng-click='editCancel()'  class="btn btn-info">取消</span>
+	</ul>
+	<!--<input ng-show="fileShow" type="file" onchange="importf(this)"/>-->
+	<input style="    margin-left: 90px;" ng-show="fileShow" type="file" onchange="angular.element(this).scope().importf(this)" ng-model="myValue"/>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>
